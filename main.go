@@ -100,6 +100,7 @@ func main() {
 					calendarSlice = append(calendarSlice, formatMonthCalendar(currentDate, true))
 					currentDate = currentDate.AddDate(0, 1, 0) // Move to the next month
 				}
+				PrintCalendarGrid(calendarSlice)
 			} else {
 				fmt.Println("Invalid date format. Please use YYYY-MM-DD.")
 				return
