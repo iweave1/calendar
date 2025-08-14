@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"path/filepath"
 	"strconv"
 	"strings"
 	"time"
@@ -80,6 +81,16 @@ func main() {
 	// Use current date
 	currentDate := time.Now()
 	if len(os.Args) > 1 {
+		if os.Args[1] == "--help" || os.Args[1] == "-h" {
+			exePath, _ := os.Executable()
+			exeName := filepath.Base(exePath)
+			printString := "Usage: " + exeName
+			printString = printString + " [YYYY-MM-DD | YYYY]"
+			fmt.Println(printString)
+
+			fmt.Println("If no arguments are provided, the current month is displayed.")
+			return
+		}
 		arg := os.Args[1]
 		if len(arg) == 10 {
 			// Try parsing as full date YYYY-MM-DD
